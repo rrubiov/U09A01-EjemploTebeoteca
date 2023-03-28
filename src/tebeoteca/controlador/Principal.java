@@ -1,7 +1,7 @@
-package personaje.controlador;
+package tebeoteca.controlador;
 
 /**
- * U09A01-EjemploPersonaje
+ * U09A01-EjemploTebeoteca
  * 
  * @author Raul Rubio
  *

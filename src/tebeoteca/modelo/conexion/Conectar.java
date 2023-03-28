@@ -38,7 +38,7 @@ public class Conectar {
 
 	final private String driver_postgres = "org.postgresql.Driver";
 	final private String driver_mysql = "com.mysql.cj.jdbc.Driver";
-	final private String host = "localhost";
+	final private String host = "localhost:3308";
 	final private String bbdd = "tebeoteca";
 	final private String user = "raul";
 	final private String passwd = "admin";

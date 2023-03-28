@@ -55,7 +55,7 @@ public class TebeoDAO implements Consultas{
 	}
 	
 	public void eliminarTebeo(TebeoDTO tDTO) {
-		this.suceso = "El tebeo se ha eliminado con éxito";
+		this.suceso = "El tebeo se ha eliminado con exito";
 		this.con = new Conectar();
 		try {
 			this.ps = this.con.getConnect().prepareStatement(BUSCAR_TEBEO_ISBN);
@@ -78,7 +78,7 @@ public class TebeoDAO implements Consultas{
 	}
 	
 	public void buscarTebeo(TebeoDTO tDTO) {
-		this.suceso = "La consulta se ha realizado con éxito";
+		this.suceso = "La consulta se ha realizado con exito";
 		this.tebeos.clear();
 		this.con = new Conectar();
 		try {
@@ -207,9 +207,9 @@ public class TebeoDAO implements Consultas{
 				while (resultSet.next()) {
 					this.tebeo = new TebeoDTO();
 					this.tebeo.setIsbn(resultSet.getString(1));
-					this.tebeo.setTitulo(resultSet.getString(1));
-					this.tebeo.setNumero(resultSet.getString(1));
-					this.tebeo.setColeccion(resultSet.getString(1));
+					this.tebeo.setTitulo(resultSet.getString(2));
+					this.tebeo.setNumero(resultSet.getString(3));
+					this.tebeo.setColeccion(resultSet.getString(4));
 
     				this.tebeos.add(this.tebeo);
 				}
@@ -224,7 +224,7 @@ public class TebeoDAO implements Consultas{
 	
 	
 	public void modificarTebeo(TebeoDTO tDTO) {
-		this.suceso = "El tebeo se ha modificado con éxito";
+		this.suceso = "El tebeo se ha modificado con exito";
 		this.con = new Conectar();
 		try {
 			this.ps = this.con.getConnect().prepareStatement(Consultas.BUSCAR_TEBEO_ISBN);

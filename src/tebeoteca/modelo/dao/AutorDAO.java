@@ -207,9 +207,9 @@ public class AutorDAO implements Consultas{
 				while (resultSet.next()) {
 					this.autor = new AutorDTO();
 					this.autor.setId(resultSet.getString(1));
-					this.autor.setNombre(resultSet.getString(1));
-					this.autor.setApellido(resultSet.getString(1));
-					this.autor.setNacionalidad(resultSet.getString(1));
+					this.autor.setNombre(resultSet.getString(2));
+					this.autor.setApellido(resultSet.getString(3));
+					this.autor.setNacionalidad(resultSet.getString(4));
 
     				this.autores.add(this.autor);
 				}

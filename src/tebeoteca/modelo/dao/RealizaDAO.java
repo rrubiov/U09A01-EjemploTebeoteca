@@ -140,7 +140,7 @@ public class RealizaDAO implements Consultas{
 				while (resultSet.next()) {
 					this.realiza = new RealizaDTO();
 					this.realiza.setTebeo(resultSet.getString(1));
-					this.realiza.setAutor(resultSet.getString(1));
+					this.realiza.setAutor(resultSet.getString(2));
 
     				this.realizan.add(this.realiza);
 				}
@@ -154,33 +154,29 @@ public class RealizaDAO implements Consultas{
 	}
 	
 	
-	public void modificarRealiza(RealizaDTO rDTO) {
+	public void modificarRealiza(RealizaDTO viejo_rDTO, RealizaDTO nuevo_rDTO) {
 		this.suceso = "El Realiza se ha modificado con éxito";
 		this.con = new Conectar();
 		try {
-			this.ps = this.con.getConnect().prepareStatement(Consultas.BUSCAR_AUTOR_ID);
-			this.ps.setInt(1, Integer.parseInt(rDTO.getId()));
+			this.ps = this.con.getConnect().prepareStatement(BUSCAR_REALIZA_TEBEO_AUTOR);
+			this.ps.setInt(1, Integer.parseInt(viejo_rDTO.getTebeo()));
+			this.ps.setInt(2, Integer.parseInt(viejo_rDTO.getAutor()));
 			this.resultSet = this.ps.executeQuery();
 			if(this.resultSet.next()==true) {
-				/*Nombre*/
-				if(null!=rDTO.getNombre()) {
-					this.ps = this.con.getConnect().prepareStatement(Consultas.ACTUALIZAR_AUTOR_NOMBRE);
-					this.ps.setString(1, rDTO.getNombre());
-					this.ps.setInt(2, Integer.parseInt(rDTO.getId()));
+				/*Tebeo*/
+				if(null!=nuevo_rDTO.getTebeo()) {
+					this.ps = this.con.getConnect().prepareStatement(ACTUALIZAR_REALIZA_TEBEO);
+					this.ps.setInt(1, Integer.parseInt(nuevo_rDTO.getTebeo()));
+					this.ps.setInt(2, Integer.parseInt(viejo_rDTO.getTebeo()));
+					this.ps.setInt(3, Integer.parseInt(viejo_rDTO.getAutor()));
 					this.ps.executeUpdate();
 				}
-				/*Apellido*/
-				else if(null!=rDTO.getApellido()) {
-					this.ps = this.con.getConnect().prepareStatement(Consultas.ACTUALIZAR_AUTOR_APELLIDO);
-					this.ps.setString(1, rDTO.getApellido());
-					this.ps.setInt(2, Integer.parseInt(rDTO.getId()));
-					this.ps.executeUpdate();
-				}
-				/*Nacionalidad*/
-				else if(null!=rDTO.getNacionalidad()) {
-					this.ps = this.con.getConnect().prepareStatement(Consultas.ACTUALIZAR_AUTOR_NACIONALIDAD);
-					this.ps.setString(1, rDTO.getNacionalidad());
-					this.ps.setInt(2, Integer.parseInt(rDTO.getId()));
+				/*Autor*/
+				else if(null!=nuevo_rDTO.getAutor()) {
+					this.ps = this.con.getConnect().prepareStatement(ACTUALIZAR_REALIZA_AUTOR);
+					this.ps.setInt(1, Integer.parseInt(nuevo_rDTO.getAutor()));
+					this.ps.setInt(2, Integer.parseInt(viejo_rDTO.getTebeo()));
+					this.ps.setInt(3, Integer.parseInt(viejo_rDTO.getAutor()));
 					this.ps.executeUpdate();
 				}
 	
