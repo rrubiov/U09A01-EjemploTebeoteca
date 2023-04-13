@@ -1,6 +1,6 @@
 package tebeoteca.controlador;
 
-import personaje.controlador.personaje.Tebeo;
+import tebeoteca.controlador.tebeo.Tebeo;
 import tebeoteca.controlador.validador.ValidadorEntradas;
 import tebeoteca.vista.menu.MenusVista;
 

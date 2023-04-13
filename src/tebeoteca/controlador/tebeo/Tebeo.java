@@ -1,4 +1,4 @@
-package personaje.controlador.personaje;
+package tebeoteca.controlador.tebeo;
 
 import java.util.ArrayList;
 
